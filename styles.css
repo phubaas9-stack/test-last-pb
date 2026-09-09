@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap');
+
+:root{
+  --paper:      #F3EFE4;
+  --paper-alt:  #EAE3D0;
+  --ink:        #1C2321;
+  --ink-soft:   #4B5450;
+  --accent:     #2F5D50;
+  --accent-2:   #B4863A;
+  --line:       #CFC7B3;
+  --card-shadow: 0 10px 22px rgba(28, 35, 33, 0.18);
+}
+
+*{ box-sizing: border-box; }
+
+html, body{
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Noto Sans Thai', sans-serif;
+  line-height: 1.7;
+}
+
+h1, h2, h3{
+  font-family: 'Noto Serif Thai', serif;
+  color: var(--ink);
+  margin: 0 0 .4em 0;
+}
+
+a{ color: inherit; }
+
+.site-header{
+  padding: 2.4rem 1.5rem 1.2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .kicker{
+  font-size: .82rem;
+  color: var(--accent);
+  letter-spacing: .04em;
+}
+
+.site-header h1{
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.site-header p{
+  color: var(--ink-soft);
+  max-width: 42ch;
+  margin: .4rem auto 0;
+}
+
+/* ---------- Corkboard directory (index.html) ---------- */
+
+.corkboard{
+  max-width: 980px;
+  margin: 3rem auto;
+  padding: 2.5rem 2rem 3rem;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0,0,0,.03) 0, transparent 40%),
+    var(--paper-alt);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.6rem;
+}
+
+.pin-card{
+  position: relative;
+  width: 230px;
+  background: var(--paper);
+  padding: 14px 14px 20px;
+  box-shadow: var(--card-shadow);
+  text-decoration: none;
+  display: block;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.pin-card:nth-child(1){ transform: rotate(-2.2deg); }
+.pin-card:nth-child(2){ transform: rotate(1.4deg); }
+.pin-card:nth-child(3){ transform: rotate(-1deg); }
+
+.pin-card:hover{
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: 0 16px 28px rgba(28,35,33,.24);
+}
+
+.pin-card::before{
+  content:"";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  box-shadow: 0 3px 4px rgba(0,0,0,.35);
+}
+
+.pin-card .photo-frame{
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: #d8d2c1;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.pin-card .photo-frame img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pin-card .caption{
+  margin-top: 12px;
+  text-align: center;
+}
+
+.pin-card .caption .name{
+  font-family: 'Noto Serif Thai', serif;
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+
+.pin-card .caption .role{
+  font-size: .82rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Student profile page ---------- */
+
+.profile-wrap{
+  max-width: 980px;
+  margin: 2.6rem auto 4rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2.4rem;
+  align-items: start;
+}
+
+@media (max-width: 760px){
+  .profile-wrap{ grid-template-columns: 1fr; }
+}
+
+.infobox{
+  border: 1px solid var(--line);
+  background: var(--paper-alt);
+  box-shadow: var(--card-shadow);
+}
+
+.infobox .infobox-head{
+  background: var(--accent);
+  color: var(--paper);
+  font-family: 'Noto Serif Thai', serif;
+  font-weight: 600;
+  padding: .7rem 1rem;
+  font-size: 1.05rem;
+}
+
+.infobox .infobox-photo{
+  aspect-ratio: 3/4;
+  background: #d8d2c1;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.infobox .infobox-photo img{
+  width: 100%; height: 100%;
+  object-fit: cover; display:block;
+}
+
+.infobox table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .92rem;
+}
+
+.infobox table tr{
+  border-top: 1px solid var(--line);
+}
+
+.infobox table th, .infobox table td{
+  text-align: left;
+  padding: .55rem .8rem;
+  vertical-align: top;
+}
+
+.infobox table th{
+  width: 40%;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.bio h2{
+  font-size: 1.4rem;
+  border-bottom: 2px solid var(--accent-2);
+  padding-bottom: .3rem;
+  margin-bottom: .8rem;
+}
+
+.bio p{ margin: 0 0 1.1rem; }
+
+.bio a.wiki-link{
+  color: var(--accent);
+  text-decoration: underline dotted var(--accent-2);
+  text-underline-offset: 3px;
+}
+
+.bio a.wiki-link:hover{
+  color: var(--accent-2);
+}
+
+.back-link{
+  display: inline-block;
+  margin: 1.6rem 1.5rem 0;
+  font-size: .88rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--ink-soft);
+}
+
+.back-link:hover{ color: var(--accent); }
+
+.site-footer{
+  text-align: center;
+  padding: 1.6rem;
+  font-size: .8rem;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+}
